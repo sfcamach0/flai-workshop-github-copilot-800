@@ -27,8 +27,11 @@ DEBUG = True
 
 import os
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
 if os.environ.get('CODESPACE_NAME'):
+    codespace_url = f"https://{os.environ.get('CODESPACE_NAME')}-8000.app.github.dev"
     ALLOWED_HOSTS.append(f"{os.environ.get('CODESPACE_NAME')}-8000.app.github.dev")
+    CSRF_TRUSTED_ORIGINS.append(codespace_url)
 
 
 # Application definition
